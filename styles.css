@@ -1,1 +1,8 @@
+// Get the text element
+const customText = document.getElementById('custom-text');
 
+// Prompt the user to enter custom text
+const newText = prompt("Enter your custom text:");
+if (newText) {
+  customText.textContent = newText; // Update the text
+}
