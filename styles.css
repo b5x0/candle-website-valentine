@@ -1,8 +1,214 @@
-// Get the text element
-const customText = document.getElementById('custom-text');
+/* General Styles */
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(45deg, #ff7eb9, #ff758c, #ff7eb9); /* Romantic gradient background */
+  color: white;
+  font-family: 'Dancing Script', cursive; /* Romantic but readable cursive font */
+  overflow: hidden; /* Prevent scrolling */
+}
 
-// Prompt the user to enter custom text
-const newText = prompt("I love you.");
-if (newText) {
-  customText.textContent = newText; // Update the text
+.container {
+  text-align: center;
+  position: relative;
+  width: 80%; /* Ensure the container doesn't overflow */
+  max-width: 800px; /* Limit maximum width for readability */
+}
+
+/* Text Styles */
+.text {
+  font-size: 28px; /* Slightly larger font size */
+  position: absolute;
+  top: 1%; /* Move text way up */
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: pre-wrap; /* Allow text to wrap */
+  overflow: hidden; /* Hide overflow for typewriter effect */
+  text-align: center; /* Center-align text */
+  width: 100%; /* Ensure text fits within the container */
+  z-index: 2; /* Ensure text is above decorations */
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 192, 203, 0.5); /* Glowing border */
+}
+
+/* Cursor Styles */
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: white;
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+/* Cursor Blink Animation */
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: white; }
+}
+
+/* Candle Container */
+.candle-container {
+  position: relative;
+  margin-top: 700px; /* Increase space between text and candle */
+}
+
+/* Candle Styles */
+.candle {
+  width: 30px;
+  height: 100px;
+  background-color: #fff0f5; /* Soft pink for the candle */
+  position: relative;
+  margin: 0 auto;
+  border-radius: 5px 5px 0 0;
+  box-shadow: 0 0 10px rgba(255, 192, 203, 0.5); /* Soft shadow for the candle */
+}
+
+/* Wax Drips */
+.wax {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 10px;
+  background-color: #fff0f5;
+  border-radius: 50%;
+}
+
+/* Flame Styles */
+.flame {
+  width: 15px;
+  height: 40px;
+  background: linear-gradient(to bottom, #ffcc00, #ff6600); /* Gradient for flame */
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: flicker 0.5s infinite ease-in-out; /* Slower flame animation */
+}
+
+/* Heart-shaped Glow */
+.glow {
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle, rgba(255, 204, 0, 0.3), transparent 70%);
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: glow 2s infinite ease-in-out;
+}
+
+/* Realistic Flame Animation */
+@keyframes flicker {
+  0%, 100% {
+    transform: translateX(-50%) scale(1) rotate(0deg);
+    height: 40px;
+  }
+  25% {
+    transform: translateX(-50%) scale(1.05) rotate(1deg);
+    height: 42px;
+  }
+  50% {
+    transform: translateX(-50%) scale(0.95) rotate(-1deg);
+    height: 38px;
+  }
+  75% {
+    transform: translateX(-50%) scale(1.02) rotate(0.5deg);
+    height: 41px;
+  }
+}
+
+/* Glow Animation */
+@keyframes glow {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* Shadow for Candle */
+.shadow {
+  width: 50px;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: blur(5px);
+}
+
+/* Add a subtle starry background */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, transparent 10%, rgba(255, 255, 255, 0.1) 10%, rgba(255, 255, 255, 0.1) 20%, transparent 20%);
+  background-size: 30px 30px;
+  animation: stars 10s linear infinite;
+}
+
+@keyframes stars {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100%); }
+}
+
+/* Add floating hearts */
+.heart {
+  position: absolute;
+  color: #ff7eb9; /* Pink hearts */
+  font-size: 20px;
+  animation: float 5s infinite ease-in-out;
+  z-index: 1; /* Ensure hearts are below text */
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Add purple sparks */
+.spark {
+  position: absolute;
+  color: #b19cd9; /* Purple sparks */
+  font-size: 16px;
+  animation: sparkle 2s infinite ease-in-out;
+  z-index: 1; /* Ensure sparks are below text */
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* Add glowing stars */
+.star {
+  position: absolute;
+  color: #fff; /* White stars */
+  font-size: 12px;
+  animation: twinkle 3s infinite ease-in-out;
+  z-index: 1; /* Ensure stars are below text */
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Add floating love notes */
+.love-note {
+  position: absolute;
+  color: #ff7eb9; /* Pink love notes */
+  font-size: 18px;
+  animation: float 6s infinite ease-in-out;
+  z-index: 1; /* Ensure love notes are below text */
 }
