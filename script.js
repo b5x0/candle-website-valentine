@@ -47,6 +47,7 @@ body {
   animation: flicker 1.5s infinite alternate;
 }
 
+
 /* Flame Animation */
 @keyframes flicker {
   0% { transform: translateX(-50%) scale(1); }
