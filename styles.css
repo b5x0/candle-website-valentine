@@ -2,7 +2,7 @@
 const customText = document.getElementById('custom-text');
 
 // Prompt the user to enter custom text
-const newText = prompt("Enter your custom text:");
+const newText = prompt("I love you.");
 if (newText) {
   customText.textContent = newText; // Update the text
 }
